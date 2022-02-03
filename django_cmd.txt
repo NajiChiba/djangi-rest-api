@@ -1,0 +1,56 @@
+1- create project:
+      django-admin startproject <name>
+
+2- run project
+      python .\manage.py runserver
+
+3- create app
+      python manae.py startapp <app name>
+
+4- register the app in the main project settings
+
+5- create views on api/views
+
+6- create urls file
+
+7- addd api urls to main project urls
+      path('', include('api.urls')),
+
+8- create model inside model file
+
+9- migrate the model
+        python manage.py migration
+        python manage.py makemigrations
+
+10- create superuser
+        python manage.py createsuperuser
+
+11- import model into amin.py for my app (api)
+        from .models import Note
+        admin.site.register(Note)
+
+12- installing rest framework, and add it to installed app
+
+13- install cors
+      python -m pip install django-cors-headers
+      => add cors to installed app
+      => add middleware: 'corsheaders.middleware.CorsMiddleware'
+      => add allow origins: CORS_ALLOW_ALL_ORIGINS= True
+
+      14- react proxy:"http://localhost:8000"
+
+14- run react project on port 8000:
+        1- move react project inside django project
+        2- run react project (with env) with the cmd : 
+              npm run build
+        3- in setting add this line inside TEMAPLATES:
+              'DIRS': [
+                BASE_DIR / '<react project name>/build'
+              ],
+        4- add react static directory on django settings
+        STATICFILES DIRS = [
+          BASE_DIR / '<react project name>/build/static
+        ]
+        5- react route ambiguition with django route:
+            we solve this issu by using 'HashRoute' insted of 'BrowserRouter'
+            in App.js (react project)
